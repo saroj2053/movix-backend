@@ -20,7 +20,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors(corsOptions));
-app.use("/api/user", userRouter);
+app.use("/user", userRouter);
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello from movix backend</h1>");
