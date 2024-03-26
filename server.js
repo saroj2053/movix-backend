@@ -13,7 +13,7 @@ const app = express();
 
 const corsOptions = {
   credentials: true,
-  origin: ["https://movix2053.netlify.app/"],
+  origin: ["https://movix2053.netlify.app"],
 };
 
 // middlewares
