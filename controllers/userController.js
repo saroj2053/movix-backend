@@ -12,14 +12,11 @@ const register = async (req, res) => {
         message: "Username is required",
       });
     }
-    const usernameRegex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/;
 
-    if (!usernameRegex.test(Body.username)) {
+    if (Body.username.length < 6) {
       return res.status(400).json({
         success: false,
-        message:
-          "Username must include letters, numbers, and special characters.",
+        message: "Username must be at least 6 characters long.",
       });
     }
 
@@ -30,14 +27,10 @@ const register = async (req, res) => {
       });
     }
 
-    const passwordRegex =
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/;
-
-    if (!passwordRegex.test(Body.password)) {
+    if (Body.password.trim().length < 6) {
       return res.status(400).json({
         success: false,
-        message:
-          "Password must include letters, numbers, atleast one capital letter and special characters.",
+        message: "Password must be at least 6 characters long.",
       });
     }
 
@@ -45,14 +38,6 @@ const register = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Confirm Password is required",
-      });
-    }
-
-    if (!passwordRegex.test(Body.confirmPassword)) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Confirm Password must include letters, numbers, atleast one capital letter and special characters.",
       });
     }
 
@@ -120,25 +105,17 @@ const login = async (req, res) => {
     });
   }
 
-  const usernameRegex =
-    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/;
-
-  if (!usernameRegex.test(Body.username)) {
+  if (Body.username.length < 6) {
     return res.status(400).json({
       success: false,
-      message:
-        "Username must include letters, numbers, and special characters.",
+      message: "Username must be at least 6 characters long.",
     });
   }
 
-  const passwordRegex =
-    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/;
-
-  if (!passwordRegex.test(Body.password)) {
+  if (Body.password.trim().length < 6) {
     return res.status(400).json({
       success: false,
-      message:
-        "Password must include letters, numbers, atleast one capital letter and special characters.",
+      message: "Password must be at least 6 characters long.",
     });
   }
 
